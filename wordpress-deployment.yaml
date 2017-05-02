@@ -1,4 +1,4 @@
-apiVersion: v1beta3
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: wordpress-deployment
@@ -10,27 +10,16 @@ spec:
         app: wordpress
     spec:
       containers:
-      - name: web
-        image: plecuyer/wordpress:1.7.9
+      - name: wordpress
+        image: beauchef/wordpress:4.7
         ports:
         - containerPort: 80
         env:
-          - name: DB_PASSWORD
-            value: "password"
           - name: DB_HOST
-            value: "127.0.0.1"
-          - name: DB_USER
-            value: "wordpress"
+            value: "35.185.73.67"
           - name: DB_NAME
             value: "wordpress"
-      - name: db
-        image: mysql
-        env:
-          - name: MYSQL_PASSWORD
-            value: "password"
-          - name: MYSQL_ROOT_PASSWORD
-            value: "password"
-          - name: MYSQL_USER
+          - name: DB_USER
             value: "wordpress"
-          - name: MYSQL_DATABASE
-            value: "wordpress"
+          - name: DB_PASSWORD
+            value: "password"
